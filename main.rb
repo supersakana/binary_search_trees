@@ -4,5 +4,4 @@ require_relative 'node'
 require_relative 'tree'
 
 bst = Tree.new([1, 2, 3, 4, 5, 6, 7])
-# p my_array
-p bst.root.data
+bst.pretty_print
