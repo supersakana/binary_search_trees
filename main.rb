@@ -8,3 +8,7 @@ bst.pretty_print
 
 bst.insert(bst.root, 8)
 bst.pretty_print
+
+bst.delete(bst.root, 6)
+bst.pretty_print
+

@@ -39,12 +39,38 @@ class Tree
     end
   end
 
-  def delete(value)
-    # deletes a value
+  def delete(root, key)
+    return root if root.nil?
+
+    if key < root.data
+      root.left = delete(root.left, key)
+    elsif key > root.data
+      root.right = delete(root.right, key)
+    else
+      if root.left.nil?
+        temp = root.right
+        root = nil
+        return temp
+      elsif root.right.nil?
+        temp = root.left
+        root = nil
+        return temp
+      end
+      temp = minValueNode(root.right)
+      root.data = temp.data
+      root.right = delete(root.right, temp.data)
+    end
+    root
   end
 
   def find(value)
     # accepts a value and returns node with given value
+  end
+
+  def minValueNode(node)
+    current = node
+    current = current.left until current.left.nil?
+    current
   end
 
   def pretty_print(node = @root, prefix = '', is_left = true)

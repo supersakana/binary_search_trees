@@ -21,3 +21,15 @@ ALGO
 4. recursivly do the following steps
 5. calculate mid of left subarray and make it root of left subtree A
 6. calculate mid of right subarray and make it root of right subtree of A
+
+<!-- DELETE METHOD -->
+
+https://www.geeksforgeeks.org/binary-search-tree-set-2-delete/?ref=lbp
+
+When we delete a node there are 3 possibilites...
+
+1. Node to be deleted is the leaf (end of the tree)
+
+2. Node to be deleted has only one child
+
+3. Node to be deleted has 2 children
