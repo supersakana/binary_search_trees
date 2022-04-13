@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-# require_relative 'node.rb'
-# require_relative 'tree.rb'
+require_relative 'node'
+require_relative 'tree'
 
-my_array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324].sort.uniq
-
-bst = Tree.new(my_array)
-p bst
+bst = Tree.new([1, 2, 3, 4, 5, 6, 7])
+# p my_array
+p bst.root.data

@@ -15,9 +15,9 @@ PROBLEM STATEMENT
 
 ALGO
 
-1. Initialze (i = 0), end = length - 1
+1. initialze (i = 0), end = length - 1
 2. mid = (start + end) / 2
-3. Create a tree node with mid as root
+3. create a tree node with mid as root
 4. recursivly do the following steps
 5. calculate mid of left subarray and make it root of left subtree A
-6. Calculate mid of right subarray and make it root of right subtree of A
+6. calculate mid of right subarray and make it root of right subtree of A
