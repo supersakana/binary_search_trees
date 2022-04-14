@@ -56,18 +56,26 @@ class Tree
         root = nil
         return temp
       end
-      temp = minValueNode(root.right)
+      temp = min_value(root.right)
       root.data = temp.data
       root.right = delete(root.right, temp.data)
     end
     root
   end
 
-  def find(value)
-    # accepts a value and returns node with given value
+  # accepts a value and returns node with given value tbc
+  def find(root, key)
+    return root.data if root.data == key || root.nil?
+
+    if root.data < key
+      root.right = find(root.right, key)
+    else
+      root.left = find(root.left, key)
+    end
   end
 
-  def minValueNode(node)
+  # needed for delete method
+  def min_value(node)
     current = node
     current = current.left until current.left.nil?
     current
