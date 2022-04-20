@@ -91,13 +91,14 @@ class Tree
       q.push(current.right) unless current.right.nil?
       q.shift
     end
-    p output
+    output
   end
 
   def inorder(root, output = [])
     return output if root.nil?
 
     inorder(root.left, output)
+
     yield root if block_given?
     output.push(root.data)
     inorder(root.right, output)
@@ -106,7 +107,7 @@ class Tree
   def preorder(root, output = [])
     return output if root.nil?
 
-    yield root if block_given?
+    # yield root if block_given?
     output.push(root.data)
     preorder(root.left, output)
     preorder(root.right, output)
@@ -155,7 +156,7 @@ class Tree
 
   def rebalance(root)
     new_tree = inorder(root)
-    @root = build_tree(new_tree)
+    @root = build_tree(new_tree.sort)
   end
 
   # prints bst in cool format
