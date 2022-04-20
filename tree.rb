@@ -94,6 +94,17 @@ class Tree
     p output
   end
 
+  def inorder(root); end
+
+  def preorder(root, output = [])
+    return output if root.nil?
+
+    yield root if block_given?
+    output.push(root.data)
+    preorder(root.left, output)
+    preorder(root.right, output)
+  end
+
   # prints bst in cool format
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
