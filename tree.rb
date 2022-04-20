@@ -80,15 +80,18 @@ class Tree
   def level_order(root)
     return root if root.nil?
 
+    output = []
     q = [root]
 
     until q.empty?
       current = q[0]
+      output.push(current.data)
       yield current if block_given?
       q.push(current.left) unless current.left.nil?
       q.push(current.right) unless current.right.nil?
       q.shift
     end
+    p output
   end
 
   # prints bst in cool format
