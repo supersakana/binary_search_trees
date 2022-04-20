@@ -112,6 +112,16 @@ class Tree
     preorder(root.right, output)
   end
 
+  # returns nodes from the bottom of the bst in order
+  def postorder(root, output = [])
+    return output if root.nil?
+
+    postorder(root.left, output)
+    postorder(root.right, output)
+    yield root if block_given?
+    output.push(root.data)
+  end
+
   # prints bst in cool format
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
