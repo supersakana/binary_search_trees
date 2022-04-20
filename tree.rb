@@ -122,6 +122,27 @@ class Tree
     output.push(root.data)
   end
 
+  def height(root)
+    return 0 if root.nil?
+
+    left_height = height(root.left)
+    right_height = height(root.right)
+
+    left_height > right_height ? left_height + 1 : right_height + 1
+  end
+
+  def depth
+    # accepts a node and returns the depth level
+  end
+
+  def balanced?
+    # returns true/false if the bst is balanced or not (depth of left/right node off more than 1 == false)
+  end
+
+  def rebalance
+    # exports the data of each node into a sorrted array and builds_tree with balanced nodes
+  end
+
   # prints bst in cool format
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
