@@ -153,8 +153,9 @@ class Tree
     dif <= 1
   end
 
-  def rebalance
-    # exports the data of each node into a sorrted array and builds_tree with balanced nodes
+  def rebalance(root)
+    new_tree = inorder(root)
+    @root = build_tree(new_tree)
   end
 
   # prints bst in cool format
