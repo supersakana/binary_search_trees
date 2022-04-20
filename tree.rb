@@ -29,11 +29,7 @@ class Tree
     else
       return root if root.data == key
 
-      if root.data < key
-        root.right = insert(root.right, key)
-      else
-        root.left = insert(root.left, key)
-      end
+      root.data < key ? root.right = insert(root.right, key) : root.left = insert(root.left, key)
 
       root
     end
@@ -63,6 +59,13 @@ class Tree
     root
   end
 
+  # finds traverses the left side of the tree until minimum node is found
+  def min_value(node)
+    current = node
+    current = current.left until current.left.nil?
+    current
+  end
+
   # accepts a value and returns node with given value tbc
   def find(root, key)
     return root.data if root.data == key || root.nil?
@@ -74,13 +77,21 @@ class Tree
     end
   end
 
-  # needed for delete method
-  def min_value(node)
-    current = node
-    current = current.left until current.left.nil?
-    current
+  def level_order(root)
+    return root if root.nil?
+
+    q = [root]
+
+    until q.empty?
+      current = q[0]
+      yield current if block_given?
+      q.push(current.left) unless current.left.nil?
+      q.push(current.right) unless current.right.nil?
+      q.shift
+    end
   end
 
+  # prints bst in cool format
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
     puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
