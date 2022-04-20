@@ -6,4 +6,4 @@ require_relative 'tree'
 bst = Tree.new([1, 2, 3, 4, 5, 6, 7])
 bst.pretty_print
 
-bst.preorder(bst.root)
+p bst.inorder(bst.root)

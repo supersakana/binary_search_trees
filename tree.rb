@@ -94,7 +94,14 @@ class Tree
     p output
   end
 
-  def inorder(root); end
+  def inorder(root, output = [])
+    return output if root.nil?
+
+    inorder(root.left, output)
+    yield root if block_given?
+    output.push(root.data)
+    inorder(root.right, output)
+  end
 
   def preorder(root, output = [])
     return output if root.nil?
