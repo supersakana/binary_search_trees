@@ -131,12 +131,26 @@ class Tree
     left_height > right_height ? left_height + 1 : right_height + 1
   end
 
-  def depth
-    # accepts a node and returns the depth level
+  # tbc
+  def depth(root)
+    return 0 if root.nil?
+
+    left_depth = depth(root.left)
+    right_depth = depth(root.right)
+
+    left_depth > right_depth ? left_depth + 1 : right_depth + 1
   end
 
-  def balanced?
-    # returns true/false if the bst is balanced or not (depth of left/right node off more than 1 == false)
+  def balanced?(root)
+    left = height(root.left)
+    right = height(root.right)
+    dif = if left >= right
+            left - right
+          else
+            right - left
+          end
+
+    dif <= 1
   end
 
   def rebalance
